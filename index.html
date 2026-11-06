@@ -664,24 +664,19 @@ img,svg{display:block}
 .tbc p b{color:var(--amber)}
 .bix{margin:16px 0 0;font-size:12px;color:var(--dim)}
 
-/* Regulatory footer */
-.reg-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-top:36px}
-.reg-head h4{margin:0;font-family:var(--f-display);font-size:16px;font-weight:600}
-.reg-head span{font-size:11px;color:var(--dim)}
-.reg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.reg-item{border-radius:14px;padding:16px;background:rgba(255,255,255,.02);border:1px solid var(--line);font-size:12px;line-height:1.55;color:var(--muted)}
-.reg-item h5{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin:0 0 8px;font-size:12.5px;font-weight:600;color:#fff}
-.reg-item p{margin:0}
-.reg-item b{color:#d8d8dc;font-family:var(--f-mono);font-weight:500}
-.st{flex:none;padding:3px 8px;border-radius:999px;font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;white-space:nowrap}
-.st.amber{color:var(--amber);border:1px solid rgba(255,176,32,.4);background:rgba(255,176,32,.08)}
-.st.red{color:var(--loss);border:1px solid rgba(255,77,79,.4);background:rgba(255,77,79,.08)}
-.st.gray{color:#c4c4ca;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04)}
-.warn-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.warn-list a{color:#fff;border-bottom:1px solid rgba(255,255,255,.25)}
-.warn-list a:hover{color:var(--o2);border-color:var(--o2)}
-.geo{display:flex;gap:10px;align-items:flex-start;margin-top:14px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,77,79,.35);background:rgba(255,77,79,.06);font-size:12.5px;color:#f1c9c9}
-.geo svg{width:16px;height:16px;flex:none;margin-top:1px;color:var(--loss)}
+/* Regulatory footer accordion */
+.reg-acc{margin-top:28px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+.reg-acc summary{display:flex;align-items:center;gap:8px;padding:12px 16px;cursor:pointer;list-style:none;font-size:12px;color:var(--muted);user-select:none}
+.reg-acc summary::-webkit-details-marker{display:none}
+.reg-acc summary b{color:#d8d8dc;font-weight:600}
+.reg-acc summary::after{content:"\25B8";flex:none;margin-left:auto;padding-left:8px;font-size:14px;line-height:1;color:var(--dim);transition:transform .2s ease}
+.reg-acc[open] summary::after{transform:rotate(90deg)}
+.reg-acc summary:hover,.reg-acc summary:focus-visible{color:#d8d8dc}
+.reg-acc summary:focus-visible{outline:1px solid var(--o2);outline-offset:-1px;border-radius:12px}
+.reg-acc ul{list-style:none;margin:0;padding:0 16px 14px;display:grid;gap:8px;font-size:12px;line-height:1.6;color:var(--muted)}
+.reg-acc li b{color:#c4c4ca;font-weight:600}
+.reg-acc a{color:var(--o2);border-bottom:1px solid rgba(255,122,47,.35);overflow-wrap:anywhere}
+.reg-acc a:hover{border-color:var(--o2)}
 
 @media (max-width:960px){
   .mfx-body,.cx-grid,.exp-grid{grid-template-columns:1fr}
@@ -691,7 +686,6 @@ img,svg{display:block}
   .steps{grid-template-columns:repeat(2,1fr)}
   .complan{grid-template-columns:1fr 1fr}
   .inc,.inc.wide{grid-column:auto}
-  .reg{grid-template-columns:1fr}
 }
 @media (max-width:767px){
   .perf{grid-template-columns:1fr;gap:12px}
@@ -1442,34 +1436,17 @@ img,svg{display:block}
         <span>Powered by Stratify</span>
       </div>
     </div>
-    <div class="reg-head">
-      <h4>Regulatory status</h4>
-      <span>As checked Nov 2026 · verify on each register</span>
-    </div>
-    <div class="reg">
-      <div class="reg-item">
-        <h5>FSC Mauritius <span class="st amber">UNVERIFIED</span></h5>
-        <p>TAG Markets listed as Investment Dealer (28/03/2024), but licence <b>GB21026474</b> / tagmarkets.com is not shown on the register.</p>
-      </div>
-      <div class="reg-item">
-        <h5>FSCA South Africa <span class="st gray">ADVICE ONLY</span></h5>
-        <p>FSP <b>55237</b> — Category I only (advice).</p>
-      </div>
-      <!-- Lloyd's TT2603133: hidden until certificate is received. -->
-      <div class="reg-item">
-        <h5>Regulator warnings <span class="st red">WARNING</span></h5>
-        <ul class="warn-list">
-          <li>Austria FMA — 20 Feb 2026 · <a href="https://www.fma.gv.at" target="_blank" rel="noopener noreferrer">fma.gv.at</a></li>
-          <li>Luxembourg CSSF — 10 Jun 2026 · <a href="https://www.cssf.lu" target="_blank" rel="noopener noreferrer">cssf.lu</a></li>
-          <li>Québec AMF — 18 Sep 2026 · <a href="https://lautorite.qc.ca" target="_blank" rel="noopener noreferrer">lautorite.qc.ca</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- MAYA rule: auto-reject applicants resident in Austria, Luxembourg or Québec. -->
-    <div class="geo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-      <span>Not available to residents of Austria, Luxembourg or Québec. Applications from these jurisdictions are automatically rejected.</span>
-    </div>
+    <details class="reg-acc">
+      <summary><span><b>Regulatory status</b> • As checked Nov 2026 • verify on each register</span></summary>
+      <ul>
+        <li><b>FSC Mauritius:</b> TAG Markets listed as Investment Dealer (28/03/2024), but licence GB21026474 / tagmarkets.com is not shown on register.</li>
+        <li><b>FSCA South Africa:</b> FSP 55237 — Category I only (advice).</li>
+        <!-- Lloyd's TT2603133: hidden until certificate is received. -->
+        <li><b>Regulator warnings:</b> Austria FMA — 20 Feb 2026 · <a href="https://www.fma.gv.at" target="_blank" rel="noopener noreferrer">fma.gv.at</a> | Luxembourg CSSF — 10 Jun 2026 · <a href="https://www.cssf.lu" target="_blank" rel="noopener noreferrer">cssf.lu</a> | Québec AMF — 18 Sep 2026 · <a href="https://lautorite.qc.ca" target="_blank" rel="noopener noreferrer">lautorite.qc.ca</a></li>
+        <!-- MAYA rule: auto-reject applicants resident in Austria, Luxembourg or Québec. -->
+        <li>Not available to residents of Austria, Luxembourg or Québec. Applications from these jurisdictions are automatically rejected.</li>
+      </ul>
+    </details>
     <p class="risk">Risk warning: Trading leveraged products such as CFDs on XAU/USD carries a high level of risk and may not be suitable for all investors. Past performance, including verified Myfxbook results, does not guarantee future results. Copy-trading services may not be available in all jurisdictions.</p>
   </div>
 </footer>
