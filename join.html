@@ -20,9 +20,11 @@
 
 <!--
   VERCEL — join.exfusioncommunity.com
-  1. Same project (x-fusion). vercel.json rewrites "/" to /join.html only when the
-     host is join.exfusioncommunity.com, so exfusioncommunity.com still serves index.html:
-       { "rewrites": [ { "source": "/", "has": [{ "type": "host", "value": "join.exfusioncommunity.com" }], "destination": "/join.html" } ] }
+  1. Same project (x-fusion). vercel.json routes "/" to /join.html only when the
+     host is join.exfusioncommunity.com, so exfusioncommunity.com still serves index.html.
+     Uses "routes", not "rewrites": rewrites run after the filesystem, and index.html
+     would always win for "/".
+       { "routes": [ { "src": "/", "has": [{ "type": "host", "value": "join.exfusioncommunity.com" }], "dest": "/join.html" } ] }
   2. Project → Settings → Domains → add join.exfusioncommunity.com (CLI: vercel domains add join.exfusioncommunity.com x-fusion).
   3. DNS at Namecheap → Advanced DNS: CNAME | Host: join | Value: the CNAME Vercel shows for the domain
      (cname.vercel-dns.com also works).

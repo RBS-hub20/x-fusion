@@ -1,9 +1,9 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "/",
       "has": [{ "type": "host", "value": "join.exfusioncommunity.com" }],
-      "destination": "/join.html"
+      "dest": "/join.html"
     }
   ]
 }
