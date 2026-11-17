@@ -92,15 +92,22 @@ h1 span{display:block}
 }
 .vback{position:absolute;inset:0;z-index:0;display:grid;place-items:center;
   background:radial-gradient(120% 70% at 50% 40%,rgba(255,90,40,.16),transparent 60%),linear-gradient(#0a0a0a,#000)}
-.vback svg{width:72%;opacity:.13;filter:blur(.3px)}
 .vcard video{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;background:transparent}
-.vcard video img{width:100%;height:100%;object-fit:cover}
 .shade{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(rgba(0,0,0,.55),transparent 22%,transparent 68%,rgba(0,0,0,.75))}
 
 .vui{position:absolute;inset:0;z-index:3;transition:opacity .3s ease}
-.vcard.playing.idle .vui{opacity:0}
-.vcard.playing.idle{cursor:none}
+.vtop,.vbot{transition:opacity .3s ease}
+.vcard.playing.idle .vtop,.vcard.playing.idle .vbot{opacity:0}
+.vcard.playing.idle:not(.preview){cursor:none}
+
+/* "Tap for sound" pill — shown whenever the video is muted */
+.vsound{position:absolute;top:64px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:8px;height:34px;padding:0 14px 0 10px;border-radius:999px;
+  font-size:13px;font-weight:700;color:#fff;white-space:nowrap;background:rgba(255,90,40,.22);border:1px solid rgba(255,122,47,.6);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 6px 20px rgba(255,60,30,.3)}
+.vsound svg{width:18px;height:18px}
+.vcard.muted .vsound{display:flex}
+.vsound:focus-visible{outline:2px solid var(--o2);outline-offset:2px}
 
 .pill{display:flex;align-items:center;gap:4px;height:40px;padding:0 6px;border-radius:999px;
   background:rgba(40,40,40,.55);border:1px solid rgba(255,255,255,.08);
@@ -126,7 +133,7 @@ h1 span{display:block}
 @keyframes pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.7);opacity:0}}
 .vcenter p{margin:0;font-size:15px;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.8)}
 .vcenter small{font-size:12px;color:var(--gray);min-height:18px}
-.vcard.playing .vcenter{opacity:0;pointer-events:none}
+.vcard.playing:not(.preview) .vcenter{opacity:0;pointer-events:none}
 .vcenter{transition:opacity .25s ease}
 
 /* Bottom controls */
@@ -236,16 +243,12 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
 
   <p class="sub">Get access to <b>SONIC.AI Gold</b> copy-trading guide, direct support, and a community focused on learning. <b>$10 minimum</b> to start — only if affordable. Join thousands and start with Global Ultimate Network today.</p>
 
-  <!-- ===== Video — reserved 9:16 space ===== -->
-  <section class="vcard" id="vcard" aria-label="SONIC.AI explainer video">
-    <div class="vback" aria-hidden="true">
-      <svg viewBox="0 0 916 472"><use href="#xmark" width="916" height="472" fill="url(#xOrange)"/></svg>
-    </div>
+  <!-- ===== Video — reserved 9:16 space. Autoplays muted (ads); first tap restarts with sound. ===== -->
+  <section class="vcard muted preview" id="vcard" aria-label="X FUSION community video">
+    <div class="vback" aria-hidden="true"></div>
 
-    <!-- TODO: Replace src with real video file assets/sonic-explainer-60s.mp4 -->
-    <video id="vid" controls playsinline preload="metadata" poster="assets/xfusion-hero.jpg">
+    <video id="joinVideo" playsinline controls preload="metadata" autoplay muted loop poster="assets/xfusion-poster.jpg" style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:24px;">
       <source id="vsrc" src="assets/sonic-explainer-60s.mp4" type="video/mp4">
-      <img src="assets/xfusion-hero.jpg" alt="X FUSION — SONIC.AI explainer">
     </video>
 
     <div class="shade" aria-hidden="true"></div>
@@ -268,11 +271,16 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
         </div>
       </div>
 
+      <button class="vsound" id="soundPill" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+        Tap for sound
+      </button>
+
       <div class="vcenter">
-        <button class="big-play" id="bigPlay" type="button" aria-label="Play the 60-second SONIC.AI explainer">
+        <button class="big-play" id="bigPlay" type="button" aria-label="Play video with sound">
           <svg viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"/></svg>
         </button>
-        <p>Watch 60-sec SONIC.AI explainer</p>
+        <p id="vlabel">Watch with sound</p>
         <small id="vnote" aria-live="polite"></small>
       </div>
 
@@ -291,7 +299,7 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
         <div class="seekrow">
           <span class="time" id="tNow">00:00</span>
           <input id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Seek">
-          <span class="time" id="tDur">01:00</span>
+          <span class="time" id="tDur">00:15</span>
           <button class="skip" id="skipBtn" type="button" aria-label="Skip video, go to join buttons">
             Skip <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6l7.5 6L4 18zM12.5 6l7.5 6-7.5 6z"/></svg>
           </button>
@@ -343,10 +351,10 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
-  var card = $('vcard'), v = $('vid'), src = $('vsrc'), ui = $('vui');
+  var card = $('vcard'), v = $('joinVideo'), src = $('vsrc'), ui = $('vui');
   var seek = $('seek'), vol = $('volume'), ppIcon = $('ppIcon');
   var PLAY = 'M7 4.5v15l12.5-7.5z', PAUSE = 'M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z';
-  var FALLBACK_DUR = 60, missing = false, idleTimer, toastTimer;
+  var FALLBACK_DUR = 15, missing = false, preview = true, idleTimer, toastTimer;
 
   // Custom controls take over from the native ones once JS runs.
   v.controls = false;
@@ -373,30 +381,52 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
     if (missing) return;
     missing = true;
     card.classList.add('novideo');
-    $('vnote').textContent = 'Explainer video coming soon';
+    $('vnote').textContent = 'Video unavailable right now';
     console.warn('Missing video - save it to assets/sonic-explainer-60s.mp4');
   }
   src.addEventListener('error', markMissing);
   v.addEventListener('error', markMissing);
 
+  function play(){
+    var p = v.play();
+    // NotAllowedError = browser blocked autoplay (e.g. iOS Low Power Mode); the play button stays up.
+    if (p && p.catch) p.catch(function(e){ if (e && e.name !== 'NotAllowedError' && e.name !== 'AbortError') toast('Video unavailable right now'); });
+  }
+
+  // Leaving the muted ad preview: restart from the top with sound, play once.
+  function startWithSound(){
+    if (missing) { toast('Video unavailable right now'); return; }
+    preview = false;
+    card.classList.remove('preview');
+    v.loop = false;
+    v.currentTime = 0;
+    if (v.volume === 0) v.volume = 1;
+    v.muted = false;
+    play();
+  }
+
   function toggle(){
-    if (missing) { toast('Explainer video coming soon'); return; }
-    if (v.paused) {
-      var p = v.play();
-      if (p && p.catch) p.catch(function(){ markMissing(); toast('Explainer video coming soon'); });
-    } else {
-      v.pause();
-    }
+    if (missing) { toast('Video unavailable right now'); return; }
+    if (preview) { startWithSound(); return; }
+    if (v.paused) play(); else v.pause();
   }
   $('bigPlay').addEventListener('click', toggle);
   $('ppBtn').addEventListener('click', toggle);
   v.addEventListener('click', toggle);
+  // In the muted preview, a tap anywhere on the video turns sound on.
+  ui.addEventListener('click', function(e){
+    if (preview && !e.target.closest('button, input')) startWithSound();
+  });
+  $('soundPill').addEventListener('click', function(){
+    if (preview) startWithSound(); else v.muted = false;
+  });
 
   function syncPlay(){
     var playing = !v.paused && !v.ended;
     card.classList.toggle('playing', playing);
     ppIcon.setAttribute('d', playing ? PAUSE : PLAY);
     $('ppBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    $('vlabel').textContent = v.ended ? 'Watch again' : preview ? 'Watch with sound' : 'Resume';
     wake();
   }
   v.addEventListener('play', syncPlay);
@@ -418,7 +448,7 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
   });
 
   function jump(by){
-    if (missing) { toast('Explainer video coming soon'); return; }
+    if (missing) { toast('Video unavailable right now'); return; }
     v.currentTime = Math.min(dur(), Math.max(0, v.currentTime + by));
   }
   $('back15').addEventListener('click', function(){ jump(-15); });
@@ -426,6 +456,7 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
 
   function syncVol(){
     var muted = v.muted || v.volume === 0;
+    card.classList.toggle('muted', muted);
     $('waves').style.display = muted ? 'none' : '';
     $('muteX').style.display = muted ? '' : 'none';
     $('muteBtn').setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
@@ -433,10 +464,12 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
     fill(vol);
   }
   vol.addEventListener('input', function(){
+    if (preview && +vol.value > 0) { startWithSound(); v.volume = +vol.value; return; }
     v.volume = +vol.value;
     v.muted = +vol.value === 0;
   });
   $('muteBtn').addEventListener('click', function(){
+    if (preview) { startWithSound(); return; }
     if (v.muted && v.volume === 0) v.volume = 1;
     v.muted = !v.muted;
   });
@@ -450,7 +483,7 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
   var pip = $('pipBtn');
   if (!document.pictureInPictureEnabled) pip.disabled = true;
   pip.addEventListener('click', function(){
-    if (missing) { toast('Explainer video coming soon'); return; }
+    if (missing) { toast('Video unavailable right now'); return; }
     if (document.pictureInPictureElement) document.exitPictureInPicture();
     else v.requestPictureInPicture().catch(function(){});
   });
@@ -475,9 +508,19 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
     });
   });
 
+  // Muted preview only runs while the card is on screen (saves data and battery).
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      if (!preview || missing) return;
+      if (entries[0].isIntersecting) play(); else v.pause();
+    }, { threshold: 0.25 }).observe(card);
+  }
+
+  v.muted = true;
   syncTime();
   syncVol();
   if (v.networkState === 3) markMissing();
+  else play();
 })();
 </script>
 </body>
