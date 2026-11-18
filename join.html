@@ -378,14 +378,23 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
   }
 
   function markMissing(){
-    if (missing) return;
+    if (missing || v.readyState >= 2) return;
     missing = true;
     card.classList.add('novideo');
     $('vnote').textContent = 'Video unavailable right now';
     console.warn('Missing video - save it to assets/sonic-explainer-60s.mp4');
   }
-  src.addEventListener('error', markMissing);
+  // A <source> error can be transient (a retried request); only give up once the browser has no source left.
+  function clearMissing(){
+    if (!missing) return;
+    missing = false;
+    card.classList.remove('novideo');
+    $('vnote').textContent = '';
+  }
+  src.addEventListener('error', function(){ if (v.networkState === 3) markMissing(); });
   v.addEventListener('error', markMissing);
+  v.addEventListener('loadeddata', clearMissing);
+  v.addEventListener('playing', clearMissing);
 
   function play(){
     var p = v.play();
@@ -523,5 +532,7 @@ input[type=range]:focus-visible{outline:2px solid var(--o2);outline-offset:3px;b
   else play();
 })();
 </script>
+<!-- XARA AI assistant widget (shared with the other page) -->
+<script src="assets/xara.js" defer></script>
 </body>
 </html>
