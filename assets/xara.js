@@ -11,12 +11,15 @@
   if (window.__xara) return;
   window.__xara = true;
 
-  // TODO: replace telegram/whatsapp with the real Telegram public channel and WhatsApp links.
+  // Private messages go to Telegram until a WhatsApp number is provided.
   var LINKS = {
     signup: 'https://exfusion.ibportal.io/auth/register?e=ngR3pfn8_UR8xMmKU83_fNom1EFgJZ_f6l5_GL-rMsI&a=1',
-    telegram: '#telegram-channel',
-    whatsapp: '#whatsapp-link'
+    telegram: 'https://t.me/GV_Support10',
+    message: 'https://t.me/GV_Support10',
+    instagram: 'https://instagram.com/gfxacommunity'
   };
+  var TG_A = '<a href="' + LINKS.telegram + '" target="_blank" rel="noopener">https://t.me/GV_Support10</a>';
+  var IG_A = '<a href="' + LINKS.instagram + '" target="_blank" rel="noopener">@gfxacommunity</a>';
 
   var AVATAR = 'assets/xara-ai-face.jpg';
   var TYPING_MS = 800;
@@ -122,7 +125,7 @@
       leadSignup: '🚀 Create FREE Account — Sign Up',
       zoomSignup: 'Register first here so we can help you after Zoom 👇',
       leadTg: 'Join FREE Public Channel',
-      leadWa: 'Send me private message on WhatsApp',
+      leadWa: 'Send me a private message!',
       sonic: '<b>SONIC.AI</b> is the AI Gold (XAU/USD) copy-trading strategy we use through <b>Copy X</b>, running on MetaTrader 5 with TAG Markets.<br><br><b>Myfxbook (snapshot 5 Nov 2026)</b><ul>' +
         '<li>Gain <b>+31.40%</b> · Abs. Gain <b>+29.48%</b></li><li>Monthly <b>1.13%</b> · Drawdown <b>0.86%</b></li>' +
         '<li>Balance <b>$141,236.01</b> · Profit <b>$35,662.50</b></li></ul>' +
@@ -141,10 +144,8 @@
         '<li><b>Regulator warnings:</b> Austria FMA (20 Feb 2026), Luxembourg CSSF (10 Jun 2026), Québec AMF (18 Sep 2026).</li></ul>' +
         'Please verify on each register yourself before depositing.',
       zoom: function (t) {
-        return '<b>Daily live Zoom</b> — 2 PM, 4 PM and 6 PM Dubai time (GMT+4).' + (t ? '<br>Your time: <b>' + t + '</b>.' : '') +
-          "<br><br>I'll send you the Zoom link via WhatsApp/Telegram 👇";
+        return 'Message us on Telegram <b>@GV_Support10</b> for the Zoom link — <b>Daily 2PM, 4PM, 6PM Dubai time</b> (GMT+4).' + (t ? '<br>Your time: <b>' + t + '</b>.' : '');
       },
-      zoomWa: 'Get Zoom link on WhatsApp',
       zoomTg: 'Get Zoom link on Telegram',
       tag: 'Our broker partner is <b>TAG Markets</b> (T-A-G, not ZAG). You open your trading account there and trade on <b>MetaTrader 5</b>, then connect <b>Copy X</b> to SONIC.AI.',
       platform: 'Platforms: <b>MetaTrader 5</b> (your TAG Markets trading account) and <b>Copy X</b> — the copy-trading app where you search “Sonic” and connect to SONIC.AI.',
@@ -154,7 +155,8 @@
       geo: 'Sorry, X FUSION is not available in your region due to local regulations.',
       greet: 'Hi! 👋 What would you like to know?',
       thanks: "You're welcome! Anything else I can help with?",
-      human: 'Sure — message our team directly 👇',
+      human: 'Telegram us here: ' + TG_A + ' — <b>@GV_Support10</b>. Community IG: ' + IG_A,
+      igBtn: 'Community Instagram @gfxacommunity',
       fallback: "I'm not sure about that one, and I don't want to guess. I can help with: how to start, SONIC.AI, complan, boost & risk, TAG Markets, Zoom schedule and safety. Or ask our team directly 👇",
       chips: {
         start: 'How to start? 💰', sonic: 'What is SONIC.AI?', complan: 'Complan / Earnings', safety: 'Is it safe? ⚠️', zoom: 'Join Zoom',
@@ -182,7 +184,7 @@
       leadSignup: '🚀 Gumawa ng FREE Account — Sign Up',
       zoomSignup: 'Mag-register ka muna dito para matulungan ka namin pagkatapos ng Zoom 👇',
       leadTg: 'Sumali sa FREE Public Channel',
-      leadWa: 'Mag-private message sa WhatsApp',
+      leadWa: 'Mag-private message sa amin',
       sonic: 'Ang <b>SONIC.AI</b> ay AI Gold (XAU/USD) copy-trading strategy na ginagamit namin sa <b>Copy X</b>, sa MetaTrader 5 kasama ang TAG Markets.<br><br><b>Myfxbook (snapshot 5 Nov 2026)</b><ul>' +
         '<li>Gain <b>+31.40%</b> · Abs. Gain <b>+29.48%</b></li><li>Monthly <b>1.13%</b> · Drawdown <b>0.86%</b></li>' +
         '<li>Balance <b>$141,236.01</b> · Profit <b>$35,662.50</b></li></ul>' +
@@ -201,10 +203,8 @@
         '<li><b>Regulator warnings:</b> Austria FMA (20 Feb 2026), Luxembourg CSSF (10 Jun 2026), Québec AMF (18 Sep 2026).</li></ul>' +
         'I-verify mo muna sa bawat register bago mag-deposit.',
       zoom: function (t) {
-        return '<b>Araw-araw na live Zoom</b> — 2 PM, 4 PM at 6 PM Dubai time (GMT+4).' + (t ? '<br>Sa oras mo: <b>' + t + '</b>.' : '') +
-          '<br><br>Ipapadala ko ang Zoom link sa WhatsApp/Telegram 👇';
+        return 'I-message mo kami sa Telegram <b>@GV_Support10</b> para sa Zoom link — <b>Araw-araw 2PM, 4PM, 6PM Dubai time</b> (GMT+4).' + (t ? '<br>Sa oras mo: <b>' + t + '</b>.' : '');
       },
-      zoomWa: 'Kunin ang Zoom link sa WhatsApp',
       zoomTg: 'Kunin ang Zoom link sa Telegram',
       tag: 'Ang broker partner namin ay <b>TAG Markets</b> (T-A-G, hindi ZAG). Doon ka magbubukas ng trading account at mag-trade sa <b>MetaTrader 5</b>, tapos i-connect ang <b>Copy X</b> sa SONIC.AI.',
       platform: 'Platforms: <b>MetaTrader 5</b> (ang TAG Markets trading account mo) at <b>Copy X</b> — ang copy-trading app kung saan hahanapin mo ang “Sonic” at ico-connect sa SONIC.AI.',
@@ -214,7 +214,8 @@
       geo: 'Pasensya na, hindi available ang X FUSION sa lugar mo dahil sa local regulations.',
       greet: 'Hello po! 👋 Ano ang gusto mong malaman?',
       thanks: 'Walang anuman! May iba ka pa bang tanong?',
-      human: 'Sige — i-message mo ang team namin 👇',
+      human: 'I-Telegram mo kami dito: ' + TG_A + ' — <b>@GV_Support10</b>. Community IG: ' + IG_A,
+      igBtn: 'Community Instagram @gfxacommunity',
       fallback: 'Hindi ako sigurado diyan, at ayokong manghula. Matutulungan kita sa: paano magsimula, SONIC.AI, complan, boost at risk, TAG Markets, Zoom schedule at safety. O i-message mo ang team namin 👇',
       chips: {
         start: 'Paano magsimula? 💰', sonic: 'Ano ang SONIC.AI?', complan: 'Complan / Kita', safety: 'Ligtas ba? ⚠️', zoom: 'Sumali sa Zoom',
@@ -242,7 +243,7 @@
 
   /* ---------------- Intents ---------------- */
   var INTENTS = [
-    ['geo', /austria|österreich|osterreich|luxemb(o|u)rg|qu[eé]bec/],
+    ['geo', /austria|österreich|osterreich|luxemb(ou|o|u)rg|qu[eé]bec/],
     ['nomoney', /no money|don'?t have (any )?money|can'?t afford|cannot afford|\bbroke\b|no budget|walang pera|wala (akong|pa akong|ako ng|pa) ?pera|kulang (ang |sa )?pera|walang (pambayad|budget|puhunan)|wala akong puhunan/],
     ['soon', /neo ?\.? ?fx|\bbit ?1\b|bit exchange|bitexchange/],
     ['bix', /\bbix\b|\bcard\b/],
@@ -254,7 +255,7 @@
     ['safety', /\bsafe|scam|legit|\brisk|regulat|licen[cs]e|ligtas|totoo|guarantee|garantiya|sure profit|sigurado|\btrust|\bfsca?\b|\bfma\b|cssf|\bamf\b|warning/],
     ['tag', /\btag\b|tag markets|\bzag\b|\bbroker/],
     ['platform', /\bmt5\b|metatrader|meta trader|copy ?-?x|copy trad|platform|\bapp\b/],
-    ['human', /human|\bagent|real person|\btao\b|your team|whatsapp|telegram|contact|kausap|\badmin|support|private message/],
+    ['human', /human|\bagent|real person|\btao\b|your team|whatsapp|telegram|contact|makontak|kontakin|kausap|\badmin|support|private message|instagram|\big\b|reach (you|out)/],
     ['greet', /^(hi|hello|hey|yo|good (morning|afternoon|evening)|kumusta|kamusta|musta|magandang)\b/],
     ['thanks', /thank|salamat|\bty\b|tnx/]
   ];
@@ -283,7 +284,7 @@
   /* ---------------- Replies ---------------- */
   var geoBlocked = false;
   function leadActs(L) {
-    return [{ label: L.leadSignup, href: LINKS.signup, kind: 'primary' }, { label: L.leadTg, href: LINKS.telegram, kind: 'primary' }, { label: L.leadWa, href: LINKS.whatsapp, kind: 'ghost' }];
+    return [{ label: L.leadSignup, href: LINKS.signup, kind: 'primary' }, { label: L.leadTg, href: LINKS.telegram, kind: 'primary' }, { label: L.leadWa, href: LINKS.message, kind: 'ghost' }];
   }
   function chipsFor(L, keys) { return keys.map(function (k) { return L.chips[k]; }); }
 
@@ -317,7 +318,7 @@
         out.push({ html: L.safety + '<span class="xara-risk">' + L.risk + '</span>', chips: chipsFor(L, ['boost', 'zoom']) });
         break;
       case 'zoom':
-        out.push({ html: L.zoom(zoomLocal()), acts: [{ label: L.zoomWa, href: LINKS.whatsapp, kind: 'primary' }, { label: L.zoomTg, href: LINKS.telegram, kind: 'ghost' }] });
+        out.push({ html: L.zoom(zoomLocal()), acts: [{ label: L.zoomTg, href: LINKS.telegram, kind: 'primary' }] });
         out.push({ html: L.zoomSignup, acts: [{ label: L.leadSignup, href: LINKS.signup, kind: 'primary' }] });
         break;
       case 'tag':
@@ -327,7 +328,7 @@
         out.push({ html: L.platform, chips: chipsFor(L, ['sonic', 'start']) });
         break;
       case 'bix':
-        out.push({ html: L.bix, acts: [{ label: L.leadWa, href: LINKS.whatsapp, kind: 'ghost' }] });
+        out.push({ html: L.bix, acts: [{ label: L.leadWa, href: LINKS.message, kind: 'ghost' }] });
         break;
       case 'soon': {
         var n = /neo/i.test(text) ? 'NEO.FX' : 'Bit1 / BIT Exchange';
@@ -341,7 +342,7 @@
         out.push({ html: L.geo });
         break;
       case 'human':
-        out.push({ html: L.human, acts: leadActs(L) });
+        out.push({ html: L.human, acts: [{ label: L.leadTg, href: LINKS.telegram, kind: 'primary' }, { label: L.igBtn, href: LINKS.instagram, kind: 'ghost' }] });
         break;
       case 'greet':
         out.push({ html: L.greet, chips: chipsFor(L, ['start', 'sonic', 'complan', 'safety', 'zoom']) });
