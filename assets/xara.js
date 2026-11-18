@@ -460,7 +460,11 @@
     if (mobileMq.matches) document.documentElement.style.overflow = 'hidden';
     if (!started) {
       started = true;
-      addBot({ html: T.en.welcome, chips: [T.en.chips.start, T.en.chips.sonic, T.en.chips.complan, T.en.chips.safety, T.en.chips.zoom] });
+      addBot({
+        html: T.en.welcome + '<span class="xara-risk">' + T.en.risk + '</span>',
+        acts: [{ label: T.en.leadSignup, href: LINKS.signup, kind: 'primary' }],
+        chips: [T.en.chips.start, T.en.chips.sonic, T.en.chips.complan, T.en.chips.safety, T.en.chips.zoom]
+      });
     }
     setTimeout(function () { (mobileMq.matches ? root.querySelector('.xara-x') : input).focus(); }, 50);
   }
