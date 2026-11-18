@@ -11,8 +11,9 @@
   if (window.__xara) return;
   window.__xara = true;
 
-  // TODO: replace with the real Telegram public channel and WhatsApp links.
+  // TODO: replace telegram/whatsapp with the real Telegram public channel and WhatsApp links.
   var LINKS = {
+    signup: 'https://exfusion.ibportal.io/auth/register?e=ngR3pfn8_UR8xMmKU83_fNom1EFgJZ_f6l5_GL-rMsI&a=1',
     telegram: '#telegram-channel',
     whatsapp: '#whatsapp-link'
   };
@@ -57,6 +58,7 @@
     '.xara-msg{max-width:82%;padding:10px 13px;border-radius:16px;font-size:13.5px;line-height:1.5;overflow-wrap:anywhere}',
     '.xara-row.bot .xara-msg{background:#17171D;border:1px solid rgba(255,255,255,.07);border-bottom-left-radius:5px;color:#E5E7EB}',
     '.xara-row.user .xara-msg{background:var(--xg);color:#fff;border-bottom-right-radius:5px;box-shadow:0 6px 18px rgba(255,60,30,.3)}',
+    '.xara-msg a{color:#FF9A5C;font-weight:700;text-decoration:underline;text-underline-offset:2px}',
     '.xara-msg b{color:#fff}.xara-msg ol,.xara-msg ul{margin:6px 0 0;padding-left:18px}.xara-msg li{margin:2px 0}',
     '.xara-msg .xara-risk{display:block;margin-top:8px;padding:8px 10px;border-radius:10px;font-size:12px;color:#FCD9B8;background:rgba(255,122,47,.08);border:1px solid rgba(255,122,47,.3)}',
     '.xara-msg .xara-math{display:block;margin-top:8px;padding:8px 10px;border-radius:10px;font-size:12.5px;background:rgba(255,77,79,.07);border:1px solid rgba(255,77,79,.3)}',
@@ -103,7 +105,11 @@
       risk: '⚠️ Trading involves risk. Past performance is not indicative of future results. No profit guarantee. Only risk what you can afford to lose.',
       placeholder: 'Type your question…',
       linkSoon: 'That link is being set up — our team will add it soon.',
-      steps: '<b>How to start with X FUSION</b><ol><li>Join our FREE Public Channel</li><li>Chat with us</li><li>Open a TAG Markets account</li><li>Deposit <b>$10+</b> — only if affordable</li><li>Connect Copy X to SONIC.AI</li></ol>',
+      steps: function () {
+        return '<b>How to start with X FUSION</b><ol><li>Create FREE account here: <a href="' + LINKS.signup.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener">Sign up on the X FUSION IB-Portal</a></li>' +
+          '<li>Deposit <b>$10+</b> only if affordable</li><li>Connect Copy X to SONIC.AI</li></ol>' +
+          'Trading involves risk. Past performance is not indicative of future results. No profit guarantee.';
+      },
       minNote: function (d) { return 'The minimum deposit is <b>$10</b> — ' + money(d) + ' is below that. Example below uses $10.'; },
       boost: function (d) {
         return '<b>Boost / exposure — example with ' + money(d) + '</b><ul>' +
@@ -113,6 +119,8 @@
           '<span class="xara-math"><b>Risk math at x24:</b> a 1% move against you = <b>-' + money(d * 0.24) + '</b> = <b>-24%</b> of your ' + money(d) + '. A <b>4.17%</b> adverse move = account <b>wiped</b>.<br>At x12: 1% = -12% of deposit, 8.33% adverse = wipe.</span>';
       },
       leadIntro: 'Ready? Start here 👇',
+      leadSignup: '🚀 Create FREE Account — Sign Up',
+      zoomSignup: 'Register first here so we can help you after Zoom 👇',
       leadTg: 'Join FREE Public Channel',
       leadWa: 'Send me private message on WhatsApp',
       sonic: '<b>SONIC.AI</b> is the AI Gold (XAU/USD) copy-trading strategy we use through <b>Copy X</b>, running on MetaTrader 5 with TAG Markets.<br><br><b>Myfxbook (snapshot 5 Nov 2026)</b><ul>' +
@@ -157,7 +165,11 @@
       risk: '⚠️ May risk ang trading. Hindi garantiya ng future results ang nakaraang performance. Walang garantisadong kita. Mag-risk lang ng perang kaya mong mawala.',
       placeholder: 'I-type ang tanong mo…',
       linkSoon: 'Inaayos pa ang link na ito — idadagdag ito ng team namin agad.',
-      steps: '<b>Paano magsimula sa X FUSION</b><ol><li>Sumali sa FREE Public Channel namin</li><li>Mag-chat sa amin</li><li>Magbukas ng TAG Markets account</li><li>Mag-deposit ng <b>$10 pataas</b> — kung kaya lang ng budget</li><li>I-connect ang Copy X sa SONIC.AI</li></ol>',
+      steps: function () {
+        return '<b>Paano magsimula sa X FUSION</b><ol><li>Gumawa ng FREE account dito: <a href="' + LINKS.signup.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener">Mag-sign up sa X FUSION IB-Portal</a></li>' +
+          '<li>Mag-deposit ng <b>$10 pataas</b> — kung kaya lang ng budget</li><li>I-connect ang Copy X sa SONIC.AI</li></ol>' +
+          'May risk ang trading. Hindi garantiya ng future results ang nakaraang performance. Walang garantisadong kita.';
+      },
       minNote: function (d) { return 'Ang minimum deposit ay <b>$10</b> — mas mababa ang ' + money(d) + '. $10 ang gamit sa example sa ibaba.'; },
       boost: function (d) {
         return '<b>Boost / exposure — example sa ' + money(d) + '</b><ul>' +
@@ -167,6 +179,8 @@
           '<span class="xara-math"><b>Risk math sa x24:</b> kapag 1% ang galaw laban sa iyo = <b>-' + money(d * 0.24) + '</b> = <b>-24%</b> ng ' + money(d) + ' mo. Kapag <b>4.17%</b> ang adverse move = <b>ubos</b> ang account.<br>Sa x12: 1% = -12% ng deposit, 8.33% adverse = ubos.</span>';
       },
       leadIntro: 'Handa ka na? Dito magsimula 👇',
+      leadSignup: '🚀 Gumawa ng FREE Account — Sign Up',
+      zoomSignup: 'Mag-register ka muna dito para matulungan ka namin pagkatapos ng Zoom 👇',
       leadTg: 'Sumali sa FREE Public Channel',
       leadWa: 'Mag-private message sa WhatsApp',
       sonic: 'Ang <b>SONIC.AI</b> ay AI Gold (XAU/USD) copy-trading strategy na ginagamit namin sa <b>Copy X</b>, sa MetaTrader 5 kasama ang TAG Markets.<br><br><b>Myfxbook (snapshot 5 Nov 2026)</b><ul>' +
@@ -234,7 +248,7 @@
     ['bix', /\bbix\b|\bcard\b/],
     ['zoom', /zoom|meeting|webinar|live session|orientation|presentation|schedule/],
     ['complan', /complan|comp plan|compensation|\bearn|income|\bkita\b|kumita|commission|komisyon|affiliate|referr|recruit|profit share|infinity|bonus|\bpool\b|downline|70\/25\/5|\bsplit\b|hatian/],
-    ['start', /\bstart|\bbegin|\bjoin\b|sign ?up|register|open (an |a )?account|\bdeposit|\binvest|minimum|how much|paano.*(simula|sali|start|mag)|magsimula|sumali|\bsali\b|mag-?start|mag-?deposit|magkano|puhunan/],
+    ['start', /\bstart|\bbegin|\bjoin\b|sign ?-?up|regist|create (an |a |my )?account|mag-?register|magpa-?rehistro|rehistro|open (an |a )?account|\bdeposit|\binvest|minimum|how much|paano.*(simula|sali|start|mag)|magsimula|sumali|\bsali\b|mag-?start|mag-?deposit|magkano|puhunan/],
     ['boost', /x ?24|x ?12|\bboost|exposure|leverage|\bwipe|margin|liquidat|\blugi|\btalo\b/],
     ['sonic', /sonic|myfxbook|performance|track record|\bgain|drawdown|\bresult|\bsignal|\bbot\b|robot/],
     ['safety', /\bsafe|scam|legit|\brisk|regulat|licen[cs]e|ligtas|totoo|guarantee|garantiya|sure profit|sigurado|\btrust|\bfsca?\b|\bfma\b|cssf|\bamf\b|warning/],
@@ -269,7 +283,7 @@
   /* ---------------- Replies ---------------- */
   var geoBlocked = false;
   function leadActs(L) {
-    return [{ label: L.leadTg, href: LINKS.telegram, kind: 'primary' }, { label: L.leadWa, href: LINKS.whatsapp, kind: 'ghost' }];
+    return [{ label: L.leadSignup, href: LINKS.signup, kind: 'primary' }, { label: L.leadTg, href: LINKS.telegram, kind: 'primary' }, { label: L.leadWa, href: LINKS.whatsapp, kind: 'ghost' }];
   }
   function chipsFor(L, keys) { return keys.map(function (k) { return L.chips[k]; }); }
 
@@ -283,7 +297,7 @@
         var d = amountOf(text), note = '';
         if (d !== null && d < 10) { note = L.minNote(d); d = 10; }
         if (d === null) d = 100;
-        out.push({ html: L.steps });
+        out.push({ html: L.steps() });
         out.push({ html: (note ? note + '<br><br>' : '') + L.boost(d) + '<span class="xara-risk">' + L.risk + '</span>' });
         out.push({ html: L.leadIntro, acts: leadActs(L), chips: chipsFor(L, ['complan', 'safety', 'zoom']) });
         break;
@@ -304,6 +318,7 @@
         break;
       case 'zoom':
         out.push({ html: L.zoom(zoomLocal()), acts: [{ label: L.zoomWa, href: LINKS.whatsapp, kind: 'primary' }, { label: L.zoomTg, href: LINKS.telegram, kind: 'ghost' }] });
+        out.push({ html: L.zoomSignup, acts: [{ label: L.leadSignup, href: LINKS.signup, kind: 'primary' }] });
         break;
       case 'tag':
         out.push({ html: L.tag, chips: chipsFor(L, ['start', 'safety']) });
