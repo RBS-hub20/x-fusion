@@ -174,36 +174,15 @@ img,svg{display:block}
 /* ---------- Hero ---------- */
 .hero{
   position:relative;isolation:isolate;overflow:hidden;
-  min-height:max(100svh,800px);
+  min-height:max(100svh,640px);
 }
-.hero-bg{position:absolute;inset:0;z-index:-3;pointer-events:none}
-.hero-bg .glow{
+.hero-bg{position:absolute;inset:0;z-index:-3;pointer-events:none;background:#000}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-bg .shade{
   position:absolute;inset:0;
   background:
-    radial-gradient(38% 42% at 50% 30%,rgba(255,122,47,.85) 0%,rgba(255,59,48,.55) 30%,rgba(255,59,48,.12) 62%,transparent 80%),
-    radial-gradient(70% 60% at 50% 0%,rgba(255,59,48,.35),transparent 70%);
-}
-.hero-bg .ring{
-  position:absolute;left:50%;top:30%;width:min(78vw,980px);aspect-ratio:1;
-  transform:translate(-50%,-50%);border-radius:50%;
-  border:1px solid rgba(255,140,90,.18);
-  box-shadow:0 0 120px rgba(255,90,40,.18) inset;
-}
-.hero-bg .ring.r2{width:min(54vw,680px);border-color:rgba(255,160,110,.12)}
-.hero-bg .grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:72px 72px;background-position:center top;
-  -webkit-mask-image:radial-gradient(80% 70% at 50% 35%,#000,transparent);
-          mask-image:radial-gradient(80% 70% at 50% 35%,#000,transparent);
-}
-.hero-bg .vignette{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(120% 90% at 50% 35%,transparent 45%,rgba(0,0,0,.85) 100%),
-    linear-gradient(to bottom,transparent 55%,#000 96%);
+    linear-gradient(to bottom,transparent 72%,#000 100%),
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75));
 }
 
 /* glass orbs for depth */
@@ -221,22 +200,6 @@ img,svg{display:block}
 .orb.o4{width:60px;height:60px;left:36%;top:66%;animation-delay:-2s;filter:blur(.5px)}
 @keyframes orb{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(12px,-22px,0)}}
 
-/* giant background type */
-.bigtype{
-  position:absolute;left:50%;top:15.5%;z-index:-2;margin:0;
-  transform:translateX(-50%);
-  font-family:var(--f-display);font-weight:800;font-size:18vw;line-height:.82;
-  letter-spacing:-.05em;white-space:nowrap;user-select:none;pointer-events:none;
-  color:rgba(255,255,255,.08);
-  background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.07);
-}
-.bigtype::before{
-  content:attr(data-text);position:absolute;inset:0;z-index:-1;
-  -webkit-text-fill-color:rgba(255,90,40,.55);-webkit-text-stroke:0;
-  filter:blur(48px);opacity:.55;
-}
 
 .badge{
   position:absolute;z-index:3;font-size:12px;color:#e9e9ee;
@@ -248,23 +211,6 @@ img,svg{display:block}
 .badge-copiers .live{width:6px;height:6px;border-radius:50%;background:#35e07a;box-shadow:0 0 10px #35e07a;animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.35}}
 
-/* central 3D figure */
-.figure{
-  position:absolute;left:50%;top:11%;z-index:1;
-  height:62vh;min-height:460px;max-height:780px;aspect-ratio:600/720;
-  transform:translateX(-50%);perspective:1200px;pointer-events:none;
-}
-.figure-tilt{width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s var(--ease)}
-.figure-float{width:100%;height:100%;animation:float 7s ease-in-out infinite}
-.figure svg{
-  width:100%;height:100%;overflow:visible;
-  filter:drop-shadow(0 40px 50px rgba(0,0,0,.85)) drop-shadow(0 0 40px rgba(255,80,40,.22));
-}
-@keyframes float{0%,100%{transform:translate3d(0,0,0) rotateZ(0)}50%{transform:translate3d(0,-14px,0) rotateZ(-.4deg)}}
-.visor-sweep{animation:sweep 6s ease-in-out infinite}
-@keyframes sweep{0%,100%{transform:translateX(-14px);opacity:.75}50%{transform:translateX(14px);opacity:1}}
-.led{animation:led 2.4s ease-in-out infinite}
-@keyframes led{50%{opacity:.35}}
 
 /* floating chrome X */
 .x3d{
@@ -455,6 +401,9 @@ img,svg{display:block}
 .js .reveal.in{opacity:1;transform:none}
 
 /* ---------- Responsive ---------- */
+@media (min-width:961px) and (max-height:780px){
+  .x3d{top:19%;width:clamp(90px,9vw,150px)}
+}
 @media (max-width:1180px){
   .hero-right{width:320px}
   .hero-desc,.hero-link{display:none}
@@ -465,21 +414,14 @@ img,svg{display:block}
   .logo{justify-self:center}
 
   .hero{min-height:auto;display:flex;flex-direction:column;padding:120px 16px 48px}
-  .hero-bg .glow{background:
-    radial-gradient(70% 34% at 50% 26%,rgba(255,122,47,.85),rgba(255,59,48,.45) 40%,transparent 80%),
-    radial-gradient(90% 40% at 50% 0%,rgba(255,59,48,.35),transparent 70%)}
-  .hero-bg .ring{top:25%;width:120vw}
-  .hero-bg .ring.r2{width:84vw}
-  .bigtype{top:150px;font-size:19vw}
   .badge-year{left:16px;top:112px}
   .badge-copiers{right:16px;top:112px}
-  .figure{position:relative;left:auto;top:auto;transform:none;margin:24px auto 0;height:min(64vh,520px);min-height:340px;max-width:100%}
   .x3d{right:10px;top:200px;width:96px}
   .orb.o1{left:-20px;top:300px;width:100px;height:100px}
   .orb.o2{right:8px;top:470px}
   .orb.o3,.orb.o4{display:none}
   .hero-left,.hero-right{position:relative;left:auto;right:auto;bottom:auto;width:100%;max-width:none}
-  .hero-left{margin-top:-90px}
+  .hero-left{margin-top:190px}
   .hero-right{margin-top:36px}
   .sub-row{flex-wrap:wrap}
   .stats-top{grid-template-columns:1fr;gap:28px}
@@ -489,6 +431,11 @@ img,svg{display:block}
   .p-text{text-align:center}
   .p-divider{width:180px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
   .cluster{--s:124px}
+}
+@media (max-width:768px){
+  /* vertical reel: 620px band at the top, headline overlaid on its lower part */
+  .hero-bg{bottom:auto;height:620px}
+  .hero-bg .shade{background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.5) 35%,rgba(0,0,0,.88) 78%,#000 100%)}
 }
 @media (max-width:520px){
   .h-right .btn-primary{padding:0 16px}
@@ -794,11 +741,12 @@ img,svg{display:block}
 <!-- ================= HERO ================= -->
 <section class="hero" aria-label="X FUSION">
   <div class="hero-bg" aria-hidden="true">
-    <div class="glow"></div>
-    <div class="ring"></div>
-    <div class="ring r2"></div>
-    <div class="grid"></div>
-    <div class="vignette"></div>
+    <!-- Desktop: 16:9 blur-fill render of the reel. Phones: the vertical reel itself (muted web copy). -->
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/videos/hero-poster.jpg">
+      <source src="assets/videos/hero-mobile.mp4" type="video/mp4" media="(max-width:768px)">
+      <source src="assets/videos/hero-header.mp4" type="video/mp4">
+    </video>
+    <div class="shade"></div>
   </div>
 
   <span class="orb o1" aria-hidden="true"></span>
@@ -806,131 +754,8 @@ img,svg{display:block}
   <span class="orb o3" aria-hidden="true"></span>
   <span class="orb o4" aria-hidden="true"></span>
 
-  <p class="bigtype" data-text="X FUSION" aria-hidden="true">X FUSION</p>
-
   <span class="badge badge-year pixel">2026</span>
   <span class="badge badge-copiers"><span class="live"></span>1000+ Active Copiers</span>
-
-  <!-- Central 3D figure: AI trader, chrome helmet + glossy visor -->
-  <div class="figure" aria-hidden="true">
-    <div class="figure-tilt" id="figTilt">
-      <div class="figure-float">
-        <svg viewBox="0 0 600 720">
-          <defs>
-            <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#1d1d20"/><stop offset=".45" stop-color="#0b0b0c"/><stop offset="1" stop-color="#000"/>
-            </linearGradient>
-            <linearGradient id="suitRim" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#FF7A2F"/><stop offset=".2" stop-color="#FF3B30" stop-opacity="0"/>
-              <stop offset=".8" stop-color="#FF3B30" stop-opacity="0"/><stop offset="1" stop-color="#FF7A2F"/>
-            </linearGradient>
-            <linearGradient id="collar" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#030303"/><stop offset=".3" stop-color="#18181a"/>
-              <stop offset=".5" stop-color="#2e2e32"/><stop offset=".7" stop-color="#18181a"/><stop offset="1" stop-color="#030303"/>
-            </linearGradient>
-            <radialGradient id="helmet" cx=".36" cy=".22" r=".9">
-              <stop offset="0" stop-color="#55555b"/><stop offset=".18" stop-color="#26262a"/>
-              <stop offset=".5" stop-color="#0c0c0e"/><stop offset="1" stop-color="#000"/>
-            </radialGradient>
-            <radialGradient id="plate" cx=".5" cy=".1" r=".9">
-              <stop offset="0" stop-color="#2a2a2e"/><stop offset=".55" stop-color="#0b0b0c"/><stop offset="1" stop-color="#000"/>
-            </radialGradient>
-            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#FF7A2F"/><stop offset=".14" stop-color="#FF3B30" stop-opacity="0"/>
-              <stop offset=".86" stop-color="#FF3B30" stop-opacity="0"/><stop offset="1" stop-color="#FF7A2F"/>
-            </linearGradient>
-            <linearGradient id="visor" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#121216"/><stop offset=".5" stop-color="#020203"/>
-              <stop offset=".8" stop-color="#1c0b05"/><stop offset="1" stop-color="#FF5A2A" stop-opacity=".75"/>
-            </linearGradient>
-            <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/>
-            </linearGradient>
-            <radialGradient id="spec" cx=".5" cy=".5" r=".5">
-              <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="pod" cx=".35" cy=".3" r=".8">
-              <stop offset="0" stop-color="#3c3c41"/><stop offset=".5" stop-color="#121214"/><stop offset="1" stop-color="#000"/>
-            </radialGradient>
-            <linearGradient id="podRing" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#FFC39A"/><stop offset=".45" stop-color="#FF7A2F"/><stop offset="1" stop-color="#FF3B30"/>
-            </linearGradient>
-            <filter id="glowF" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3.5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <linearGradient id="fadeG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff"/><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
-            </linearGradient>
-            <mask id="fade"><rect width="600" height="720" fill="url(#fadeG)"/></mask>
-            <clipPath id="visorClip">
-              <path d="M148,236 C210,200 390,200 452,236 C462,282 450,322 426,338 C378,356 222,356 174,338 C150,322 138,282 148,236 Z"/>
-            </clipPath>
-          </defs>
-
-          <g mask="url(#fade)">
-            <!-- shoulders / suit -->
-            <path d="M10,720 C30,610 110,570 205,552 L215,470 L385,470 L395,552 C490,570 570,610 590,720 Z" fill="url(#suit)"/>
-            <path d="M10,720 C30,610 110,570 205,552 M395,552 C490,570 570,610 590,720" fill="none" stroke="url(#suitRim)" stroke-width="2.5" opacity=".9"/>
-            <path d="M120,600 C170,575 210,566 240,562" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="10" stroke-linecap="round"/>
-
-            <!-- high neck collar -->
-            <path d="M206,452 C206,436 394,436 394,452 L402,566 C402,588 198,588 198,566 Z" fill="url(#collar)"/>
-            <path d="M210,452 C255,441 345,441 390,452" fill="none" stroke="#FF7A2F" stroke-opacity=".7" stroke-width="1.5"/>
-            <path d="M212,505 C260,515 340,515 388,505" fill="none" stroke="#000" stroke-opacity=".6" stroke-width="2"/>
-            <line x1="300" y1="458" x2="300" y2="590" stroke="#3a3a3e" stroke-width="2"/>
-            <rect x="295" y="468" width="10" height="20" rx="3" fill="#2a2a2e" stroke="#4a4a50" stroke-width="1"/>
-
-            <!-- headphone band -->
-            <path d="M158,300 C150,-25 450,-25 442,300" fill="none" stroke="#0d0d0f" stroke-width="26" stroke-linecap="round"/>
-            <path d="M158,300 C150,-25 450,-25 442,300" fill="none" stroke="url(#podRing)" stroke-width="2" opacity=".85" filter="url(#glowF)"/>
-
-            <!-- helmet shell -->
-            <path d="M300,90 C402,90 458,172 458,282 C458,372 424,438 364,468 L236,468 C176,438 142,372 142,282 C142,172 198,90 300,90 Z" fill="url(#helmet)"/>
-            <path d="M300,90 C402,90 458,172 458,282 C458,372 424,438 364,468 L236,468 C176,438 142,372 142,282 C142,172 198,90 300,90 Z" fill="none" stroke="url(#rim)" stroke-width="3.5"/>
-            <ellipse cx="250" cy="146" rx="78" ry="34" transform="rotate(-18 250 146)" fill="url(#spec)"/>
-            <!-- orange accent line on helmet edge -->
-            <path d="M168,204 C196,118 404,118 432,204" fill="none" stroke="#FF7A2F" stroke-width="2.5" stroke-linecap="round" filter="url(#glowF)"/>
-            <path d="M300,96 L300,124" stroke="#FF7A2F" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
-
-            <!-- visor -->
-            <path d="M148,236 C210,200 390,200 452,236 C462,282 450,322 426,338 C378,356 222,356 174,338 C150,322 138,282 148,236 Z" fill="url(#visor)"/>
-            <g clip-path="url(#visorClip)">
-              <g class="visor-sweep">
-                <path d="M222,228 C256,219 344,219 378,228 L366,262 C336,256 264,256 234,262 Z" fill="url(#gloss)" opacity=".85"/>
-                <path d="M392,232 L412,236 L398,268 L384,266 Z" fill="#fff" opacity=".35"/>
-              </g>
-              <ellipse cx="300" cy="352" rx="170" ry="30" fill="#FF5A2A" opacity=".55" filter="url(#glowF)"/>
-            </g>
-            <path d="M148,236 C210,200 390,200 452,236 C462,282 450,322 426,338 C378,356 222,356 174,338 C150,322 138,282 148,236 Z" fill="none" stroke="url(#podRing)" stroke-width="2" opacity=".9"/>
-            <path d="M184,330 C240,346 360,346 416,330" fill="none" stroke="#FFB37A" stroke-width="2" stroke-linecap="round" opacity=".8" filter="url(#glowF)"/>
-
-            <!-- face plate / respirator -->
-            <path d="M198,356 C240,366 360,366 402,356 C396,412 360,452 300,460 C240,452 204,412 198,356 Z" fill="url(#plate)" stroke="#232326" stroke-width="1.5"/>
-            <g class="led" stroke="#FF7A2F" stroke-width="2.6" stroke-linecap="round" filter="url(#glowF)">
-              <line x1="270" y1="398" x2="330" y2="398"/>
-              <line x1="278" y1="412" x2="322" y2="412"/>
-              <line x1="288" y1="426" x2="312" y2="426"/>
-            </g>
-
-            <!-- ear pods -->
-            <g>
-              <ellipse cx="150" cy="300" rx="40" ry="66" fill="url(#pod)"/>
-              <ellipse cx="150" cy="300" rx="40" ry="66" fill="none" stroke="url(#podRing)" stroke-width="5"/>
-              <ellipse cx="146" cy="300" rx="22" ry="42" fill="#050505" stroke="#2c2c30" stroke-width="1.5"/>
-              <ellipse cx="138" cy="268" rx="8" ry="14" fill="#fff" opacity=".12"/>
-            </g>
-            <g>
-              <ellipse cx="450" cy="300" rx="40" ry="66" fill="url(#pod)"/>
-              <ellipse cx="450" cy="300" rx="40" ry="66" fill="none" stroke="url(#podRing)" stroke-width="5"/>
-              <ellipse cx="454" cy="300" rx="22" ry="42" fill="#050505" stroke="#2c2c30" stroke-width="1.5"/>
-              <ellipse cx="440" cy="268" rx="8" ry="14" fill="#fff" opacity=".08"/>
-            </g>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </div>
 
   <!-- Floating chrome X (extruded with stacked layers) -->
   <div class="x3d" aria-hidden="true">
@@ -1499,8 +1324,11 @@ img,svg{display:block}
   }
   spin.innerHTML = html;
 
+  // Hero video: keep it still for reduced-motion users (poster shows instead)
+  var heroVideo = document.getElementById('heroVideo');
+  if (heroVideo && reduce){ heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }
+
   // Pointer parallax for 3D depth (desktop only)
-  var figTilt = document.getElementById('figTilt');
   var xTilt = document.getElementById('xTilt');
   if (!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
     var raf = 0, px = 0, py = 0;
@@ -1510,7 +1338,6 @@ img,svg{display:block}
       if (raf) return;
       raf = requestAnimationFrame(function(){
         raf = 0;
-        figTilt.style.transform = 'rotateY('+(px*8)+'deg) rotateX('+(-py*6)+'deg) translate3d('+(px*10)+'px,'+(py*6)+'px,0)';
         xTilt.style.transform = 'translate3d('+(px*-24)+'px,'+(py*-18)+'px,0)';
       });
     }, {passive:true});
