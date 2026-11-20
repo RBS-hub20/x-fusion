@@ -13,7 +13,7 @@
 
   // Private messages go to Telegram until a WhatsApp number is provided.
   var LINKS = {
-    signup: 'https://exfusion.ibportal.io/auth/register?e=ngR3pfn8_UR8xMmKU83_fNom1EFgJZ_f6l5_GL-rMsI&a=1',
+    signup: 'https://exfusion.ibportal.io/auth/register?e=fxa4Caw0JkfXIuhC9RSN6SJqclOYFAh0DFefnnHsBJQ&a=1',
     telegram: 'https://t.me/GV_Support10',
     message: 'https://t.me/GV_Support10',
     instagram: 'https://instagram.com/gfxacommunity'
@@ -111,7 +111,7 @@
       steps: function () {
         return '<b>How to start with X FUSION</b><ol><li>Create FREE account here: <a href="' + LINKS.signup.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener">Sign up on the X FUSION IB-Portal</a></li>' +
           '<li>Deposit <b>$10+</b> only if affordable</li><li>Connect Copy X to SONIC.AI</li></ol>' +
-          'Trading involves risk. Past performance is not indicative of future results. No profit guarantee.';
+          'Trading involves risk. Past performance is not indicative of future results. Only risk what you can afford to lose.';
       },
       minNote: function (d) { return 'The minimum deposit is <b>$10</b> — ' + money(d) + ' is below that. Example below uses $10.'; },
       boost: function (d) {
@@ -170,7 +170,7 @@
       steps: function () {
         return '<b>Paano magsimula sa X FUSION</b><ol><li>Gumawa ng FREE account dito: <a href="' + LINKS.signup.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener">Mag-sign up sa X FUSION IB-Portal</a></li>' +
           '<li>Mag-deposit ng <b>$10 pataas</b> — kung kaya lang ng budget</li><li>I-connect ang Copy X sa SONIC.AI</li></ol>' +
-          'May risk ang trading. Hindi garantiya ng future results ang nakaraang performance. Walang garantisadong kita.';
+          'May risk ang trading. Hindi garantiya ng future results ang nakaraang performance. Mag-risk lang ng perang kaya mong mawala.';
       },
       minNote: function (d) { return 'Ang minimum deposit ay <b>$10</b> — mas mababa ang ' + money(d) + '. $10 ang gamit sa example sa ibaba.'; },
       boost: function (d) {
