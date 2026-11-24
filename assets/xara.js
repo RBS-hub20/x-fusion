@@ -129,7 +129,7 @@
       sonic: '<b>SONIC.AI</b> is the AI Gold (XAU/USD) copy-trading strategy we use through <b>Copy X</b>, running on MetaTrader 5 with TAG Markets.<br><br><b>Myfxbook (snapshot 5 Nov 2026)</b><ul>' +
         '<li>Gain <b>+31.40%</b> · Abs. Gain <b>+29.48%</b></li><li>Monthly <b>1.13%</b> · Drawdown <b>0.86%</b></li>' +
         '<li>Balance <b>$141,236.01</b> · Profit <b>$35,662.50</b></li></ul>' +
-        '<b>Copy X:</b> 790,300 followers · 236 trading days · Performance fee 30% (70% you).',
+        '<b>Copy X:</b> 915,101 followers · 239 trading days · Performance fee 30% (70% you).',
       complan: '<b>X FUSION Complan</b> — profit only on <b>real market gains</b>.<ul>' +
         '<li><b>Split:</b> 70% client / 25% affiliate / 5% trader</li>' +
         '<li><b>Lot commission:</b> L1 $2 · L2–L4 $1 · L5–L10 $0.50</li>' +
@@ -188,7 +188,7 @@
       sonic: 'Ang <b>SONIC.AI</b> ay AI Gold (XAU/USD) copy-trading strategy na ginagamit namin sa <b>Copy X</b>, sa MetaTrader 5 kasama ang TAG Markets.<br><br><b>Myfxbook (snapshot 5 Nov 2026)</b><ul>' +
         '<li>Gain <b>+31.40%</b> · Abs. Gain <b>+29.48%</b></li><li>Monthly <b>1.13%</b> · Drawdown <b>0.86%</b></li>' +
         '<li>Balance <b>$141,236.01</b> · Profit <b>$35,662.50</b></li></ul>' +
-        '<b>Copy X:</b> 790,300 followers · 236 trading days · Performance fee 30% (70% sa iyo).',
+        '<b>Copy X:</b> 915,101 followers · 239 trading days · Performance fee 30% (70% sa iyo).',
       complan: '<b>X FUSION Complan</b> — may kita lang kapag may <b>totoong market gains</b>.<ul>' +
         '<li><b>Hatian:</b> 70% client / 25% affiliate / 5% trader</li>' +
         '<li><b>Lot commission:</b> L1 $2 · L2–L4 $1 · L5–L10 $0.50</li>' +
@@ -251,7 +251,7 @@
     ['complan', /complan|comp plan|compensation|\bearn|income|\bkita\b|kumita|commission|komisyon|affiliate|referr|recruit|profit share|infinity|bonus|\bpool\b|downline|70\/25\/5|\bsplit\b|hatian/],
     ['start', /\bstart|\bbegin|\bjoin\b|sign ?-?up|regist|create (an |a |my )?account|mag-?register|magpa-?rehistro|rehistro|open (an |a )?account|\bdeposit|\binvest|minimum|how much|paano.*(simula|sali|start|mag)|magsimula|sumali|\bsali\b|mag-?start|mag-?deposit|magkano|puhunan/],
     ['boost', /x ?24|x ?12|\bboost|exposure|leverage|\bwipe|margin|liquidat|\blugi|\btalo\b/],
-    ['sonic', /sonic|myfxbook|performance|track record|\bgain|drawdown|\bresult|\bsignal|\bbot\b|robot/],
+    ['sonic', /sonic|myfxbook|follower|tagasunod|trading days?|ilang araw|copiers?|performance|track record|\bgain|drawdown|\bresult|\bsignal|\bbot\b|robot/],
     ['safety', /\bsafe|scam|legit|\brisk|regulat|licen[cs]e|ligtas|totoo|guarantee|garantiya|sure profit|sigurado|\btrust|\bfsca?\b|\bfma\b|cssf|\bamf\b|warning/],
     ['tag', /\btag\b|tag markets|\bzag\b|\bbroker/],
     ['platform', /\bmt5\b|metatrader|meta trader|copy ?-?x|copy trad|platform|\bapp\b/],
