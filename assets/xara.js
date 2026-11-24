@@ -13,7 +13,7 @@
 
   // Private messages go to Telegram until a WhatsApp number is provided.
   var LINKS = {
-    signup: 'https://exfusion.ibportal.io/auth/register?e=fxa4Caw0JkfXIuhC9RSN6SJqclOYFAh0DFefnnHsBJQ&a=1',
+    signup: 'https://exfusion.ibportal.io/auth/register?e=-d0ZTiev5YfJf7qS0Z8DqlkPBJou_cBcPXVnoKQGnZY&a=1',
     telegram: 'https://t.me/GV_Support10',
     message: 'https://t.me/GV_Support10',
     instagram: 'https://instagram.com/gfxacommunity'
