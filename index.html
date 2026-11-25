@@ -589,6 +589,39 @@ img,svg{display:block}
 .note-ic svg{width:18px;height:18px}
 .note-tag{display:block;margin-bottom:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--o2)}
 
+/* Monthly results (profit-only card) */
+.mr-wrap{max-width:680px;margin:0 auto}
+.mr-card{position:relative;overflow:hidden;border-radius:24px;padding:clamp(22px,4vw,40px);text-align:center;background:radial-gradient(120% 70% at 50% 0%,rgba(255,122,47,.16),rgba(255,59,48,.04) 45%,transparent 70%),#0b0b0d;border:1px solid rgba(255,122,47,.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 24px 70px rgba(0,0,0,.6),0 0 60px rgba(255,59,48,.10)}
+.mr-card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad)}
+.mr-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mr-top b{color:#fff;font-weight:700}
+.mr-top .sym{color:var(--o2)}
+.mr-title{margin:clamp(22px,3.4vw,32px) 0 0;font-family:var(--f-display);font-size:clamp(15px,2vw,19px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.mr-title span{display:inline-block;font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--muted)}
+.mr-big{display:block;margin:clamp(14px,2.4vw,22px) 0 0;font-size:clamp(64px,13vw,128px);line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mr-sub{margin:12px 0 0;font-size:14px;color:#d0d0d5}
+.mr-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:clamp(18px,3vw,26px) 0 0;padding:0;list-style:none}
+.mr-pills li{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:4px 13px;border-radius:999px;font-size:12.5px;font-weight:600;color:#e5e5ea;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)}
+.mr-pills li b{font-family:var(--f-mono);color:#fff}
+.mr-pills .sofar{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--o2);border-color:rgba(255,122,47,.5);background:rgba(255,122,47,.1)}
+.mr-pills .sofar::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--o2);box-shadow:0 0 8px var(--o2);animation:pulse 2s infinite}
+.mr-pills .amp{color:#fff;background:var(--grad);border-color:transparent;box-shadow:0 6px 18px rgba(255,59,48,.35)}
+.mr-box{margin-top:clamp(22px,3.4vw,30px);border-radius:16px;padding:16px clamp(12px,2.4vw,22px) 18px;background:rgba(255,255,255,.025);border:1px solid var(--line)}
+.mr-box-h{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mr-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:14px}
+.mr-stats > div{padding:4px 6px;border-left:1px solid var(--line)}
+.mr-stats > div:first-child{border-left:0}
+.mr-stats b{display:block;font-family:var(--f-mono);font-size:clamp(18px,2.4vw,24px);font-weight:700;letter-spacing:-.02em;color:#fff}
+.mr-stats b.o{color:var(--o2)}
+.mr-stats span{display:block;margin-top:4px;font-size:11.5px;color:var(--muted)}
+.mr-note{max-width:680px;margin:14px auto 0;font-size:12px;line-height:1.6;color:#a9a9b0;text-align:center}
+.mr-note b{color:#fff;font-weight:600}
+@media (max-width:600px){
+  .mr-top{justify-content:center}
+  .mr-stats{grid-template-columns:1fr 1fr;row-gap:14px}
+  .mr-stats > div:nth-child(3){border-left:0}
+}
+
 /* Exposure */
 .exp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
 .muted{margin:0;font-size:13px;color:var(--muted)}
@@ -1093,6 +1126,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="proof-missing"><div>Proof screenshot goes here<br><code>assets/copyx-provider-hub-sonic.png</code></div></div>
       <figcaption><span>Proof · Copy X Provider Hub screenshot</span><span>SONIC</span></figcaption>
     </figure>
+  </div>
+</section>
+
+<!-- ================= 04C · MONTHLY TRADING RESULTS ================= -->
+<section class="section tight" id="monthly" aria-label="Monthly trading results">
+  <div class="container">
+    <div class="mr-wrap">
+      <article class="mr-card reveal" aria-label="Monthly trading results, November 2026">
+        <div class="mr-top"><span><b>Global Ultimate Network</b></span><span class="sym">Sonic AI · XAUUSD</span></div>
+        <h3 class="mr-title">Monthly Trading Results <span>— November 2026</span></h3>
+        <span class="gw"><span class="mr-big pixel">+20.92%</span></span>
+        <p class="mr-sub">Gross, before the 70/30 profit split</p>
+        <ul class="mr-pills">
+          <li class="sofar">SO FAR</li>
+          <li>Your share <b>70%</b></li>
+          <li>Community <b>30%</b></li>
+          <li class="amp">Amplify <b>24x</b></li>
+        </ul>
+        <div class="mr-box">
+          <div class="mr-box-h">Monthly Performance · November 2026 · So Far</div>
+          <div class="mr-stats">
+            <div><b class="o">+20.92%</b><span>Profit</span></div>
+            <div><b>26</b><span>Trades</span></div>
+            <div><b>84.6%</b><span>Win Rate</span></div>
+            <div><b>22 / 4</b><span>Wins / Losses</span></div>
+          </div>
+        </div>
+      </article>
+      <p class="mr-note">Base Capital: <b>$10,000</b>. With <b>24x Boost = $240,000 Exposure</b>, not cash balance. 24x amplifies gains AND losses. Past performance is not a guarantee. Trading involves risk. Only use money you can afford to lose.</p>
+    </div>
   </div>
 </section>
 
