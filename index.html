@@ -318,6 +318,20 @@ img,svg{display:block}
 .cta-row .btn{--h:52px;font-size:15px}
 .cta-row .btn-primary{padding:0 26px}
 .cta-risk{margin:12px 0 0;max-width:440px;font-size:11px;line-height:1.5;color:var(--dim)}
+/* community group buttons (WhatsApp green / Telegram blue, secondary) */
+.btn-wa,.btn-tg{color:#fff;border:1px solid;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.btn-wa{background:rgba(37,211,102,.14);border-color:rgba(37,211,102,.6);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 8px 24px rgba(37,211,102,.14)}
+.btn-wa svg{color:#25D366}
+.btn-wa:hover{transform:translateY(-2px);background:rgba(37,211,102,.24);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 12px 30px rgba(37,211,102,.25)}
+.btn-tg{background:rgba(42,171,238,.14);border-color:rgba(42,171,238,.6);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 8px 24px rgba(42,171,238,.14)}
+.btn-tg svg{color:#2AABEE}
+.btn-tg:hover{transform:translateY(-2px);background:rgba(42,171,238,.24);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 12px 30px rgba(42,171,238,.25)}
+.btn-wa svg,.btn-tg svg{width:18px;height:18px;flex:none}
+.cta-row.groups{margin-top:12px}
+.join-card .groups{display:grid;gap:8px;margin-top:14px}
+.join-card .groups .btn{--h:44px;width:100%;justify-content:center;font-size:13.5px}
+.foot-groups{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.foot-groups .btn{--h:44px;font-size:13.5px}
 
 /* hero bottom-right */
 .hero-right{position:absolute;z-index:4;right:var(--gutter);bottom:7%;width:360px}
@@ -455,6 +469,9 @@ img,svg{display:block}
 /* ---------- Responsive ---------- */
 @media (min-width:961px) and (max-height:780px){
   .x3d{top:19%;width:clamp(90px,9vw,150px)}
+}
+@media (min-width:961px) and (max-height:740px){
+  .x3d{display:none}
 }
 @media (max-width:1180px){
   .hero-right{width:320px}
@@ -879,6 +896,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <a class="btn btn-glass" href="#chat" data-xara-open>Chat With Us <span class="chev"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3.5 10.5 8 6 12.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
     </div>
+    <div class="cta-row groups">
+      <a class="btn btn-wa" href="https://chat.whatsapp.com/LwzH91u5nr62D2e7spTZrk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.5-5.2A8.5 8.5 0 1 1 20.5 12Z"/><path d="M9 8.6c0 3.3 2.6 6.2 6 6.4l1.2-1.4-1.9-1-.8.8a4.2 4.2 0 0 1-2.4-2.4l.8-.8-1-1.9L9 8.6Z" fill="currentColor" stroke-width="1"/></svg>Join WhatsApp Group</a>
+      <a class="btn btn-tg" href="https://t.me/ExFusionCommunity" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.3-1.5ZM9.6 14.2l8.6-5.4c.4-.3.8-.1.5.2l-7.1 6.4-.3 3.2-1.7-4.4Z"/></svg>Join Telegram Group</a>
+    </div>
     <p class="cta-risk">Trading involves risk. Past performance is not indicative of future results. Only risk what you can afford to lose.</p>
   </div>
 
@@ -909,6 +930,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </form>
       <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      <div class="groups">
+      <a class="btn btn-wa" href="https://chat.whatsapp.com/LwzH91u5nr62D2e7spTZrk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.5-5.2A8.5 8.5 0 1 1 20.5 12Z"/><path d="M9 8.6c0 3.3 2.6 6.2 6 6.4l1.2-1.4-1.9-1-.8.8a4.2 4.2 0 0 1-2.4-2.4l.8-.8-1-1.9L9 8.6Z" fill="currentColor" stroke-width="1"/></svg>Join WhatsApp Group</a>
+      <a class="btn btn-tg" href="https://t.me/ExFusionCommunity" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.3-1.5ZM9.6 14.2l8.6-5.4c.4-.3.8-.1.5.2l-7.1 6.4-.3 3.2-1.7-4.4Z"/></svg>Join Telegram Group</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1395,8 +1420,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="meta">
         <span>© 2026 <b>X FUSION</b> — Global Ultimate Network</span>
         <span>Broker partner: TAG Markets</span>
-        <span>Join: <a class="foot-link" href="https://t.me/GV_Support10" target="_blank" rel="noopener">Telegram @GV_Support10</a> • Community: <a class="foot-link" href="https://instagram.com/gfxacommunity" target="_blank" rel="noopener">Instagram @gfxacommunity</a></span>
+        <span>Chat with Support: <a class="foot-link" href="https://t.me/GV_Support10" target="_blank" rel="noopener">Telegram @GV_Support10</a> • Community: <a class="foot-link" href="https://instagram.com/gfxacommunity" target="_blank" rel="noopener">Instagram @gfxacommunity</a></span>
       </div>
+    </div>
+    <div class="foot-groups" aria-label="Community groups">
+      <a class="btn btn-wa" href="https://chat.whatsapp.com/LwzH91u5nr62D2e7spTZrk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.5-5.2A8.5 8.5 0 1 1 20.5 12Z"/><path d="M9 8.6c0 3.3 2.6 6.2 6 6.4l1.2-1.4-1.9-1-.8.8a4.2 4.2 0 0 1-2.4-2.4l.8-.8-1-1.9L9 8.6Z" fill="currentColor" stroke-width="1"/></svg>Join WhatsApp Group</a>
+      <a class="btn btn-tg" href="https://t.me/ExFusionCommunity" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.3-1.5ZM9.6 14.2l8.6-5.4c.4-.3.8-.1.5.2l-7.1 6.4-.3 3.2-1.7-4.4Z"/></svg>Join Telegram Group</a>
     </div>
     <details class="reg-acc">
       <summary><span><b>Regulatory status</b> • As checked Nov 2026 • verify on each register</span></summary>

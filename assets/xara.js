@@ -11,15 +11,20 @@
   if (window.__xara) return;
   window.__xara = true;
 
-  // Private messages go to Telegram until a WhatsApp number is provided.
+  // Private messages / support go to Telegram @GV_Support10. Community groups: WhatsApp + Telegram.
   var LINKS = {
     signup: 'https://exfusion.ibportal.io/auth/register?e=wYqns-dCmaSDqLchictujaE686lnrQrvnRRCGYBOhnQ&a=1',
     telegram: 'https://t.me/GV_Support10',
     message: 'https://t.me/GV_Support10',
+    support: 'https://t.me/GV_Support10',
+    waGroup: 'https://chat.whatsapp.com/LwzH91u5nr62D2e7spTZrk',
+    tgGroup: 'https://t.me/ExFusionCommunity',
     instagram: 'https://instagram.com/gfxacommunity'
   };
   var TG_A = '<a href="' + LINKS.telegram + '" target="_blank" rel="noopener">https://t.me/GV_Support10</a>';
   var IG_A = '<a href="' + LINKS.instagram + '" target="_blank" rel="noopener">@gfxacommunity</a>';
+  var WA_GA = '<a href="' + LINKS.waGroup + '" target="_blank" rel="noopener">https://chat.whatsapp.com/LwzH91u5nr62D2e7spTZrk</a>';
+  var TG_GA = '<a href="' + LINKS.tgGroup + '" target="_blank" rel="noopener">https://t.me/ExFusionCommunity</a>';
 
   var AVATAR = 'assets/xara-ai-face.jpg';
   var TYPING_MS = 800;
@@ -73,6 +78,8 @@
     '.xara-act{display:flex;align-items:center;justify-content:center;min-height:42px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:700;color:#fff;text-decoration:none;text-align:center}',
     '.xara-act.primary{background:var(--xg);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 8px 20px rgba(255,60,30,.35)}',
     '.xara-act.ghost{background:#111;border:1px solid var(--xo2)}',
+    '.xara-act.wa{background:rgba(37,211,102,.16);border:1px solid rgba(37,211,102,.6)}',
+    '.xara-act.tg{background:rgba(42,171,238,.16);border:1px solid rgba(42,171,238,.6)}',
     '.xara-typing{display:flex;gap:4px;padding:14px 14px}',
     '.xara-typing i{width:7px;height:7px;border-radius:50%;background:#9CA3AF;animation:xara-bounce 1s infinite ease-in-out}',
     '.xara-typing i:nth-child(2){animation-delay:.15s}.xara-typing i:nth-child(3){animation-delay:.3s}',
@@ -155,7 +162,13 @@
       geo: 'Sorry, X FUSION is not available in your region due to local regulations.',
       greet: 'Hi! 👋 What would you like to know?',
       thanks: "You're welcome! Anything else I can help with?",
-      human: 'Telegram us here: ' + TG_A + ' — <b>@GV_Support10</b>. Community IG: ' + IG_A,
+      human: '<b>Chat with Support</b> on Telegram: ' + TG_A + ' — <b>@GV_Support10</b>.<br><br><b>Community groups</b><br>WhatsApp Group: ' + WA_GA + '<br>Telegram Group: ' + TG_GA + '<br>Instagram: ' + IG_A,
+      waGroup: 'Join our <b>WhatsApp Group</b> here: ' + WA_GA,
+      tgGroup: 'Join our <b>Telegram Group</b> here: ' + TG_GA,
+      groups: 'Join our community groups:<br>WhatsApp Group: ' + WA_GA + '<br>Telegram Group: ' + TG_GA,
+      waBtn: 'Join WhatsApp Group',
+      tgGroupBtn: 'Join Telegram Group',
+      supportBtn: 'Chat with Support',
       igBtn: 'Community Instagram @gfxacommunity',
       fallback: "I'm not sure about that one, and I don't want to guess. I can help with: how to start, SONIC.AI, complan, boost & risk, TAG Markets, Zoom schedule and safety. Or ask our team directly 👇",
       chips: {
@@ -214,7 +227,13 @@
       geo: 'Pasensya na, hindi available ang X FUSION sa lugar mo dahil sa local regulations.',
       greet: 'Hello po! 👋 Ano ang gusto mong malaman?',
       thanks: 'Walang anuman! May iba ka pa bang tanong?',
-      human: 'I-Telegram mo kami dito: ' + TG_A + ' — <b>@GV_Support10</b>. Community IG: ' + IG_A,
+      human: '<b>Chat with Support</b> sa Telegram: ' + TG_A + ' — <b>@GV_Support10</b>.<br><br><b>Community groups</b><br>WhatsApp Group: ' + WA_GA + '<br>Telegram Group: ' + TG_GA + '<br>Instagram: ' + IG_A,
+      waGroup: 'Sumali sa <b>WhatsApp Group</b> namin dito: ' + WA_GA,
+      tgGroup: 'Sumali sa <b>Telegram Group</b> namin dito: ' + TG_GA,
+      groups: 'Sumali sa community groups namin:<br>WhatsApp Group: ' + WA_GA + '<br>Telegram Group: ' + TG_GA,
+      waBtn: 'Sumali sa WhatsApp Group',
+      tgGroupBtn: 'Sumali sa Telegram Group',
+      supportBtn: 'Chat with Support',
       igBtn: 'Community Instagram @gfxacommunity',
       fallback: 'Hindi ako sigurado diyan, at ayokong manghula. Matutulungan kita sa: paano magsimula, SONIC.AI, complan, boost at risk, TAG Markets, Zoom schedule at safety. O i-message mo ang team namin 👇',
       chips: {
@@ -247,6 +266,9 @@
     ['nomoney', /no money|don'?t have (any )?money|can'?t afford|cannot afford|\bbroke\b|no budget|walang pera|wala (akong|pa akong|ako ng|pa) ?pera|kulang (ang |sa )?pera|walang (pambayad|budget|puhunan)|wala akong puhunan/],
     ['soon', /neo ?\.? ?fx|\bbit ?1\b|bit exchange|bitexchange/],
     ['bix', /\bbix\b|\bcard\b/],
+    ['wagroup', /whats ?app|\bwa (group|gc)\b/],
+    ['tggroup', /(telegram|\btg\b).{0,20}(group|\bgc\b|channel|community|grupo)|(group|\bgc\b|channel|grupo).{0,20}(telegram|\btg\b)/],
+    ['groups', /\bgroups?\b|\bgc\b|group chat|grupo|public channel|community chat/],
     ['zoom', /zoom|meeting|webinar|live session|orientation|presentation|schedule/],
     ['complan', /complan|comp plan|compensation|\bearn|income|\bkita\b|kumita|commission|komisyon|affiliate|referr|recruit|profit share|infinity|bonus|\bpool\b|downline|70\/25\/5|\bsplit\b|hatian/],
     ['start', /\bstart|\bbegin|\bjoin\b|sign ?-?up|regist|create (an |a |my )?account|mag-?register|magpa-?rehistro|rehistro|open (an |a )?account|\bdeposit|\binvest|minimum|how much|paano.*(simula|sali|start|mag)|magsimula|sumali|\bsali\b|mag-?start|mag-?deposit|magkano|puhunan/],
@@ -255,7 +277,7 @@
     ['safety', /\bsafe|scam|legit|\brisk|regulat|licen[cs]e|ligtas|totoo|guarantee|garantiya|sure profit|sigurado|\btrust|\bfsca?\b|\bfma\b|cssf|\bamf\b|warning/],
     ['tag', /\btag\b|tag markets|\bzag\b|\bbroker/],
     ['platform', /\bmt5\b|metatrader|meta trader|copy ?-?x|copy trad|platform|\bapp\b/],
-    ['human', /human|\bagent|real person|\btao\b|your team|whatsapp|telegram|contact|makontak|kontakin|kausap|\badmin|support|private message|instagram|\big\b|reach (you|out)/],
+    ['human', /human|\bagent|real person|\btao\b|your team|telegram|contact|makontak|kontakin|kausap|\badmin|support|private message|instagram|\big\b|reach (you|out)/],
     ['greet', /^(hi|hello|hey|yo|good (morning|afternoon|evening)|kumusta|kamusta|musta|magandang)\b/],
     ['thanks', /thank|salamat|\bty\b|tnx/]
   ];
@@ -291,7 +313,7 @@
   function reply(intent, text) {
     var L = T[lang], out = [];
     if (intent === 'geo') geoBlocked = true;
-    if (geoBlocked && /^(geo|start|boost|human|zoom|tag|platform)$/.test(intent)) return [{ html: L.geo }];
+    if (geoBlocked && /^(geo|start|boost|human|zoom|tag|platform|wagroup|tggroup|groups)$/.test(intent)) return [{ html: L.geo }];
 
     switch (intent) {
       case 'start': {
@@ -342,7 +364,16 @@
         out.push({ html: L.geo });
         break;
       case 'human':
-        out.push({ html: L.human, acts: [{ label: L.leadTg, href: LINKS.telegram, kind: 'primary' }, { label: L.igBtn, href: LINKS.instagram, kind: 'ghost' }] });
+        out.push({ html: L.human, acts: [{ label: L.supportBtn, href: LINKS.support, kind: 'primary' }, { label: L.waBtn, href: LINKS.waGroup, kind: 'wa' }, { label: L.tgGroupBtn, href: LINKS.tgGroup, kind: 'tg' }, { label: L.igBtn, href: LINKS.instagram, kind: 'ghost' }] });
+        break;
+      case 'wagroup':
+        out.push({ html: L.waGroup, acts: [{ label: L.waBtn, href: LINKS.waGroup, kind: 'wa' }, { label: L.tgGroupBtn, href: LINKS.tgGroup, kind: 'tg' }, { label: L.supportBtn, href: LINKS.support, kind: 'ghost' }] });
+        break;
+      case 'tggroup':
+        out.push({ html: L.tgGroup, acts: [{ label: L.tgGroupBtn, href: LINKS.tgGroup, kind: 'tg' }, { label: L.waBtn, href: LINKS.waGroup, kind: 'wa' }, { label: L.supportBtn, href: LINKS.support, kind: 'ghost' }] });
+        break;
+      case 'groups':
+        out.push({ html: L.groups, acts: [{ label: L.waBtn, href: LINKS.waGroup, kind: 'wa' }, { label: L.tgGroupBtn, href: LINKS.tgGroup, kind: 'tg' }, { label: L.supportBtn, href: LINKS.support, kind: 'ghost' }] });
         break;
       case 'greet':
         out.push({ html: L.greet, chips: chipsFor(L, ['start', 'sonic', 'complan', 'safety', 'zoom']) });
